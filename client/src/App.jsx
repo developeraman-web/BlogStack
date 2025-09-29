@@ -18,7 +18,7 @@ import {
   RouteSignUp,
   RouteUsers,
 } from "./helpers/RouteName";
-import Index from "./pages";
+
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
@@ -38,6 +38,7 @@ import UserBlogDetail from "./pages/Blog/UserBlogDetail";
 import { useSelector } from "react-redux";
 import UserCategoryDetail from "./pages/category/UserCategoryDetail";
 import EditBlog from "./pages/Blog/EditBlog";
+import Index from "./pages/Index";
 
 function App() {
   const user = useSelector((state) => state.user);
