@@ -9,7 +9,6 @@ import categoryRoute from "./routes/categoryRoute.js";
 import blogRoute from "./routes/blogRoute.js";
 import commentRoute from "./routes/commentRoute.js";
 import blogLikeRoute from "./routes/blogLikeRoute.js";
-import path from "path";
 dotenv.config();
 const port = process.env.PORT || 3000;
 const app = express();
@@ -21,7 +20,6 @@ app.use(
     credentials: true,
   })
 );
-const _dirname = path.resolve();
 // route setup
 let count = 0;
 app.use("/api/auth", AuthRoute);
@@ -30,10 +28,7 @@ app.use("/api/category", categoryRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/comment", commentRoute);
 app.use("/api/like", blogLikeRoute);
-app.use(express.static(path.join(_dirname, "/client/dist")));
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(_dirname, "client", "dist", "index.html"));
-});
+
 mongoose
   .connect(process.env.MONGODB_CONN, { dbName: "blogApp" })
   .then(() => console.log("database connected"))
